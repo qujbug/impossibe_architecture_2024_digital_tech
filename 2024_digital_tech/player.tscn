@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://brb1bn30d0m2f"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_8w0x0"]
+[ext_resource type="Script" path="res://teleportcollision.gd" id="2_wstcm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mri42"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_67wxt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xsfru"]
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_8w0x0")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_mri42")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_67wxt")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.954922, 0.296858, 0, -0.296858, 0.954922, 0, 1.07942, 2.40749)
+
+[node name="teleportcollision" type="Area3D" parent="."]
+script = ExtResource("2_wstcm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="teleportcollision"]
+shape = SubResource("BoxShape3D_xsfru")
+
+[connection signal="area_entered" from="teleportcollision" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="teleportcollision" to="." method="_on_area_3d_area_exited"]

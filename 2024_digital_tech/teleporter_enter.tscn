@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://5vinux5q1bjb"]
+
+[ext_resource type="Script" path="res://enterpoint.gd" id="1_srmlh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wtfy2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vr6jk"]
+
+[node name="enterpoint" type="Area3D" groups=["teleporter-enter", "teleporter-to"]]
+script = ExtResource("1_srmlh")
+exitpointx = 2.3
+exitpointy = 21.0
+exitpointz = 3.213
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_wtfy2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vr6jk")

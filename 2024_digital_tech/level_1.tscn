@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo8qeq54uy733"]
+
+[ext_resource type="PackedScene" uid="uid://brb1bn30d0m2f" path="res://player.tscn" id="2_5fxeo"]
+[ext_resource type="PackedScene" uid="uid://5vinux5q1bjb" path="res://teleporter_enter.tscn" id="3_ywh77"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cwta3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3srlq"]
+size = Vector3(10.0007, 0.502197, 9.9136)
+
+[node name="Level1" type="Node3D"]
+
+[node name="Floor-1" type="StaticBody3D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor-1"]
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_cwta3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor-1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000610352, 0.00158691, -0.0436554)
+shape = SubResource("BoxShape3D_3srlq")
+
+[node name="Floor-2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 25, 25)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor-2"]
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_cwta3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor-2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000610352, 0.00158691, -0.0436554)
+shape = SubResource("BoxShape3D_3srlq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.676259, 0.736664, 0, -0.736664, -0.676259, 0, 6.28954, -10.9604)
+
+[node name="player" parent="." instance=ExtResource("2_5fxeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3594, 2.27809, 3.30667)
+
+[node name="teleporters" type="Node3D" parent="."]
+
+[node name="enterpoint" parent="teleporters" instance=ExtResource("3_ywh77")]
+exitpointx = 0.0
+exitpointy = 0.0
+exitpointz = 0.0
