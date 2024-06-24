@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://circular_room.gd" id="1_ih14f"]
 [ext_resource type="PackedScene" uid="uid://brb1bn30d0m2f" path="res://player.tscn" id="2_rxag6"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ppwd4"]
-size = Vector3(0.0291748, 1, 5.06445)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_3tpik"]
-size = Vector3(4.98901, 1, 5.00122)
+size = Vector3(14.9991, 1, 5.00122)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3afli"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ppwd4"]
+size = Vector3(0.0291748, 1, 5.06445)
 
 [node name="circularRoom" type="Node3D"]
 script = ExtResource("1_ih14f")
@@ -19,136 +19,86 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 0, 0, 0, 0.998321, 0.0579299, 0, -0.0579299, 0.998321, 0, 5.05227, 13.5883)
 
 [node name="player" parent="." instance=ExtResource("2_rxag6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.96214, 6.20269, 0.10454)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.96214, -1.23766, 0.10454)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.945541, -0.105237, 0.308021, 0, 0.946294, 0.323307, -0.325502, -0.3057, 0.89476, -0.444587, 3.05764, 3.86385)
 
-[node name="rotatingobjects" type="Node3D" parent="."]
+[node name="Rotation" type="Node3D" parent="."]
 
-[node name="collisions" type="Node3D" parent="rotatingobjects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08498, 0, 0)
+[node name="0Floor" type="StaticBody3D" parent="Rotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 
-[node name="circleArea3D" type="Area3D" parent="rotatingobjects/collisions" groups=["circle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75299, 1.86624, 0.00249481)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/0Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
+shape = SubResource("BoxShape3D_3tpik")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/collisions/circleArea3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotation/0Floor"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_3afli")
+
+[node name="circleArea3D" type="Area3D" parent="Rotation/0Floor" groups=["circle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/0Floor/circleArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064)
 shape = SubResource("BoxShape3D_ppwd4")
 
-[node name="circleArea3D2" type="Area3D" parent="rotatingobjects/collisions" groups=["circle"]]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 6.18579, 7.83604, 0.00249481)
+[node name="270floor" type="StaticBody3D" parent="Rotation"]
+transform = Transform3D(1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/collisions/circleArea3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/270floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
+shape = SubResource("BoxShape3D_3tpik")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotation/270floor"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_3afli")
+
+[node name="circleArea3D" type="Area3D" parent="Rotation/270floor" groups=["circle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/270floor/circleArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064)
 shape = SubResource("BoxShape3D_ppwd4")
 
-[node name="circleArea3D3" type="Area3D" parent="rotatingobjects/collisions" groups=["circle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48365, 9.18285, 0.00249481)
+[node name="180floor" type="StaticBody3D" parent="Rotation"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/collisions/circleArea3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/180floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
+shape = SubResource("BoxShape3D_3tpik")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotation/180floor"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_3afli")
+
+[node name="circleArea3D" type="Area3D" parent="Rotation/180floor" groups=["circle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/180floor/circleArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064)
 shape = SubResource("BoxShape3D_ppwd4")
 
-[node name="circleArea3D4" type="Area3D" parent="rotatingobjects/collisions" groups=["circle"]]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.39374, 3.37286, 0.00249481)
+[node name="90floor" type="StaticBody3D" parent="Rotation"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 5, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/collisions/circleArea3D4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/90floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
+shape = SubResource("BoxShape3D_3tpik")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotation/90floor"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_3afli")
+
+[node name="circleArea3D" type="Area3D" parent="Rotation/90floor" groups=["circle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/90floor/circleArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064)
 shape = SubResource("BoxShape3D_ppwd4")
 
-[node name="floors" type="Node3D" parent="rotatingobjects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08498, 0, 0)
-metadata/_edit_group_ = true
-
-[node name="Floor2" type="StaticBody3D" parent="rotatingobjects/floors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19913, 0.853339, -0.112748)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/floors/Floor2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0, -0.0118408)
-shape = SubResource("BoxShape3D_3tpik")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="rotatingobjects/floors/Floor2"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_3afli")
-
-[node name="Floor" type="StaticBody3D" parent="rotatingobjects/floors"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/floors/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0, -0.0118408)
-shape = SubResource("BoxShape3D_3tpik")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="rotatingobjects/floors/Floor"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_3afli")
-
-[node name="Floor3" type="StaticBody3D" parent="rotatingobjects/floors"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 7.85749, 3.87978, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/floors/Floor3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891484, -0.0356474, -0.0118408)
-shape = SubResource("BoxShape3D_3tpik")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="rotatingobjects/floors/Floor3"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0.91892, 0, 0)
-mesh = SubResource("BoxMesh_3afli")
-
-[node name="Floor4" type="StaticBody3D" parent="rotatingobjects/floors"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.07915, 7.8876, -0.119387)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/floors/Floor4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0, -0.0118408)
-shape = SubResource("BoxShape3D_3tpik")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="rotatingobjects/floors/Floor4"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_3afli")
-
-[node name="Floor5" type="StaticBody3D" parent="rotatingobjects/floors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02803, 10.9623, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/floors/Floor5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0, -0.0118408)
-shape = SubResource("BoxShape3D_3tpik")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="rotatingobjects/floors/Floor5"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_3afli")
-
-[node name="Floor6" type="StaticBody3D" parent="rotatingobjects/floors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.274132, 10.4251, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/floors/Floor6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0, -0.0118408)
-shape = SubResource("BoxShape3D_3tpik")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="rotatingobjects/floors/Floor6"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_3afli")
-
-[node name="Floor7" type="StaticBody3D" parent="rotatingobjects/floors"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3.20497, 7.54059, -0.356443)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/floors/Floor7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0, -0.0118408)
-shape = SubResource("BoxShape3D_3tpik")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="rotatingobjects/floors/Floor7"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_3afli")
-
-[node name="Floor8" type="StaticBody3D" parent="rotatingobjects/floors"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.42804, 2.82941, -0.0141888)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rotatingobjects/floors/Floor8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000854492, 0, -0.0118408)
-shape = SubResource("BoxShape3D_3tpik")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="rotatingobjects/floors/Floor8"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_3afli")
-
-[connection signal="body_entered" from="rotatingobjects/collisions/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
-[connection signal="body_entered" from="rotatingobjects/collisions/circleArea3D2" to="." method="_on_circle_area_3d_body_entered"]
-[connection signal="body_entered" from="rotatingobjects/collisions/circleArea3D3" to="." method="_on_circle_area_3d_body_entered"]
-[connection signal="body_entered" from="rotatingobjects/collisions/circleArea3D4" to="." method="_on_circle_area_3d_body_entered"]
+[connection signal="body_entered" from="Rotation/0Floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
+[connection signal="body_entered" from="Rotation/270floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
+[connection signal="body_entered" from="Rotation/180floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
+[connection signal="body_entered" from="Rotation/90floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]

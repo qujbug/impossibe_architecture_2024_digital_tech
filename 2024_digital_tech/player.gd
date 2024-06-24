@@ -1,9 +1,13 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+@export var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var number_of_jumps = 0
+
+
+
+@onready var all_interactions = []
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -12,6 +16,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	exacute_interaction()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -34,11 +39,11 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
+	
 	direction = Vector3(Input.get_action_strength("moveleft") - Input.get_action_strength("moveright"),
 	0,
 	Input.get_action_strength("moveup") - Input.get_action_strength("movedown"))
-	camera()
 
 	#this is just to test if an input works. ui_text_sebmit
 	if Input.is_action_pressed("ui_text_submit"):
@@ -46,17 +51,31 @@ func _physics_process(delta):
 		
 	move_and_slide()
 
-
-#interaction methods
-func _on_area_3d_area_entered(area):
-	##iinteracting by teleporting
-	if area.is_in_group("teleporter-enter"):
-		position.x += 25
-		position.y += 25
-		position.z += 25
 	
-func camera():
+func camera():#####NOTWORKING#########
 	if Input.is_action_pressed("rightcamera"):
 		$Camera3d.rotate.x += 90
 	if Input.is_action_pressed("leftcamera"):
 		$Camera3D.rotate.x += 90
+
+#########Intereaction Methods
+
+func _on_interaction_area_area_entered(area):
+	all_interactions.insert(0, area)
+	if area.is_in_group("teleport"):
+		pass
+
+
+func _on_interaction_area_area_exited(area):
+	all_interactions.erase(area)
+
+
+
+func exacute_interaction():
+	if all_interactions:
+		var cur_interation = all_interactions[0]
+		match cur_interation.interact_type:
+			"teleport" : 
+				position.x += cur_interation.interact_value[0]
+				position.y += cur_interation.interact_value[1]
+				position.z += cur_interation.interact_value[2]
