@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dw2p6jalq01hu"]
+[gd_scene load_steps=12 format=3 uid="uid://dw2p6jalq01hu"]
 
 [ext_resource type="PackedScene" uid="uid://brb1bn30d0m2f" path="res://player.tscn" id="1_iafpi"]
 
@@ -7,7 +7,11 @@ size = Vector3(9.97438, 1, 5.0076)
 
 [sub_resource type="BoxMesh" id="BoxMesh_41hyp"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lh1tw"]
+albedo_color = Color(0.517647, 0.517647, 0.517647, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_q2p8x"]
+material = SubResource("StandardMaterial3D_lh1tw")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uoygm"]
 size = Vector3(3.00806, 2.00049, 0.484009)
@@ -94,7 +98,7 @@ transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("BoxMesh_41hyp")
 
 [node name="wall" type="StaticBody3D" parent="long hall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43794, 0.971574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28855, 0.922954)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="long hall/wall"]
@@ -106,7 +110,7 @@ transform = Transform3D(0.999992, 0, 0, 0, 1, 0, 0, 0, 0.999992, -0.0158842, -0.
 shape = SubResource("BoxShape3D_dshex")
 
 [node name="wall2" type="StaticBody3D" parent="long hall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42022, -0.953398)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29525, -0.84293)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="long hall/wall2"]
@@ -118,7 +122,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0120239, -0.00974154, -0.0
 shape = SubResource("BoxShape3D_dshex")
 
 [node name="ceiling" type="StaticBody3D" parent="long hall"]
-transform = Transform3D(0.999999, 0, 0, 0, -4.37114e-08, -1, 0, 0.999999, -4.37114e-08, 0, 2.1791, 0)
+transform = Transform3D(0.999999, 0, 0, 0, -4.37114e-08, -1, 0, 0.999999, -4.37114e-08, 0, 2.03803, 0)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="long hall/ceiling"]
@@ -148,10 +152,10 @@ fov = 82.6963
 [node name="SubViewport" type="SubViewport" parent="viewports/short to long back"]
 
 [node name="Camera3D" type="Camera3D" parent="viewports/short to long back/SubViewport"]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -2.63164, 1.1847, 0)
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -2.59204, 1.1847, 0)
 
 [node name="short to long back" type="Sprite3D" parent="viewports/short to long back"]
-transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, -3.99559, 1.26901, 9.76147)
+transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, -3.99559, 1.15594, 9.71661)
 texture = SubResource("ViewportTexture_0vjby")
 
 [node name="player" parent="." instance=ExtResource("1_iafpi")]

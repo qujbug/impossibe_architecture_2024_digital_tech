@@ -1,5 +1,5 @@
 extends Node3D
-var rotationangle = PI/8
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,8 +11,6 @@ func _process(delta):
 	pass
 
 
-
-
-func _on_circle_area_3d_body_entered(body):
+func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):
-		$Rotation.rotation.z += (rotationangle)
+		get_tree().change_scene_to_file("res://level_1.tscn")

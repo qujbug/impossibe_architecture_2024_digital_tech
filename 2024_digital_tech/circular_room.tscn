@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://twhgaha0tbed"]
+[gd_scene load_steps=12 format=3 uid="uid://twhgaha0tbed"]
 
 [ext_resource type="Script" path="res://circular_room.gd" id="1_ih14f"]
 [ext_resource type="PackedScene" uid="uid://brb1bn30d0m2f" path="res://player.tscn" id="2_rxag6"]
@@ -6,20 +6,39 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_3tpik"]
 size = Vector3(14.9991, 1, 5.00122)
 
-[sub_resource type="BoxMesh" id="BoxMesh_3afli"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yt7r5"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e0dwu"]
+material = SubResource("StandardMaterial3D_yt7r5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppwd4"]
 size = Vector3(0.0291748, 1, 5.06445)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f56f0"]
+albedo_color = Color(1, 0.584314, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3afli"]
+material = SubResource("StandardMaterial3D_f56f0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xffv"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3l0r8"]
+material = SubResource("StandardMaterial3D_1xffv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qet0u"]
+size = Vector3(36.3903, 27.8684, 2.23718)
 
 [node name="circularRoom" type="Node3D"]
 script = ExtResource("1_ih14f")
 metadata/_edit_group_ = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.998321, 0.0579299, 0, -0.0579299, 0.998321, 0, 5.05227, 13.5883)
+transform = Transform3D(1, 0, 0, 0, 0.998321, 0.0579299, 0, -0.0579299, 0.998321, 0, 5.05227, 35.5823)
 
 [node name="player" parent="." instance=ExtResource("2_rxag6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.96214, -1.23766, 0.10454)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.96214, -12.1164, 0.10454)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.945541, -0.105237, 0.308021, 0, 0.946294, 0.323307, -0.325502, -0.3057, 0.89476, -0.444587, 3.05764, 3.86385)
@@ -27,15 +46,15 @@ transform = Transform3D(0.945541, -0.105237, 0.308021, 0, 0.946294, 0.323307, -0
 [node name="Rotation" type="Node3D" parent="."]
 
 [node name="0Floor" type="StaticBody3D" parent="Rotation"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/0Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
 shape = SubResource("BoxShape3D_3tpik")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rotation/0Floor"]
-transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_3afli")
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_e0dwu")
 
 [node name="circleArea3D" type="Area3D" parent="Rotation/0Floor" groups=["circle"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
@@ -45,7 +64,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064
 shape = SubResource("BoxShape3D_ppwd4")
 
 [node name="270floor" type="StaticBody3D" parent="Rotation"]
-transform = Transform3D(1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0, 1, -5, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -15, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/270floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
@@ -63,15 +82,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064
 shape = SubResource("BoxShape3D_ppwd4")
 
 [node name="180floor" type="StaticBody3D" parent="Rotation"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 5, 0)
+transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 15, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/180floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
 shape = SubResource("BoxShape3D_3tpik")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotation/180floor"]
-transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_3afli")
 
 [node name="circleArea3D" type="Area3D" parent="Rotation/180floor" groups=["circle"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
@@ -80,8 +95,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064)
 shape = SubResource("BoxShape3D_ppwd4")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotation/180floor"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_3l0r8")
+
 [node name="90floor" type="StaticBody3D" parent="Rotation"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 5, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 15, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/90floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
@@ -98,7 +117,95 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064)
 shape = SubResource("BoxShape3D_ppwd4")
 
+[node name="45Floor" type="StaticBody3D" parent="Rotation"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 10, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/45Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
+shape = SubResource("BoxShape3D_3tpik")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotation/45Floor"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_e0dwu")
+
+[node name="circleArea3D" type="Area3D" parent="Rotation/45Floor" groups=["circle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/45Floor/circleArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064)
+shape = SubResource("BoxShape3D_ppwd4")
+
+[node name="315floor" type="StaticBody3D" parent="Rotation"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -10, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/315floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
+shape = SubResource("BoxShape3D_3tpik")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotation/315floor"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_3afli")
+
+[node name="circleArea3D" type="Area3D" parent="Rotation/315floor" groups=["circle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/315floor/circleArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064)
+shape = SubResource("BoxShape3D_ppwd4")
+
+[node name="225floor" type="StaticBody3D" parent="Rotation"]
+transform = Transform3D(-0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 0, 0, 1, -10, 10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/225floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
+shape = SubResource("BoxShape3D_3tpik")
+
+[node name="circleArea3D" type="Area3D" parent="Rotation/225floor" groups=["circle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/225floor/circleArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064)
+shape = SubResource("BoxShape3D_ppwd4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotation/225floor"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_3l0r8")
+
+[node name="135floor" type="StaticBody3D" parent="Rotation"]
+transform = Transform3D(-0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0, 0, 1, 10, 10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/135floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518036, 0, -0.0118408)
+shape = SubResource("BoxShape3D_3tpik")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotation/135floor"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_3afli")
+
+[node name="circleArea3D" type="Area3D" parent="Rotation/135floor" groups=["circle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotation/135floor/circleArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94404, 0.0966547, -0.045064)
+shape = SubResource("BoxShape3D_ppwd4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56024, 0.994263, 3.67949)
+shape = SubResource("BoxShape3D_qet0u")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56024, 0.994263, -3.73938)
+shape = SubResource("BoxShape3D_qet0u")
+
 [connection signal="body_entered" from="Rotation/0Floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
 [connection signal="body_entered" from="Rotation/270floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
 [connection signal="body_entered" from="Rotation/180floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
 [connection signal="body_entered" from="Rotation/90floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
+[connection signal="body_entered" from="Rotation/45Floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
+[connection signal="body_entered" from="Rotation/315floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
+[connection signal="body_entered" from="Rotation/225floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
+[connection signal="body_entered" from="Rotation/135floor/circleArea3D" to="." method="_on_circle_area_3d_body_entered"]
