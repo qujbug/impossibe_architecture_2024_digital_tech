@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://olwxr5ogtjwv"]
+
+[ext_resource type="Script" path="res://elephant/elephant.gd" id="1_jl3ol"]
+[ext_resource type="PackedScene" uid="uid://djxy5rnqpxcin" path="res://elephant/elephant-assets/elephant.blend" id="2_1v8r8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cg2eh"]
+size = Vector3(1.79062, 0.0168152, 1.68518)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sseid"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6socc"]
+size = Vector3(0.390045, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nou43"]
+size = Vector3(3.45459, 0.374512, 1)
+
+[node name="elephant" type="CharacterBody3D"]
+script = ExtResource("1_jl3ol")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+skeleton = NodePath("../collisions/floors/top")
+
+[node name="elephant" parent="." instance=ExtResource("2_1v8r8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93682, -1.19209e-07, 2.17456)
+
+[node name="collisions" type="Node3D" parent="."]
+
+[node name="floors" type="StaticBody3D" parent="collisions"]
+
+[node name="top" type="CollisionShape3D" parent="collisions/floors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.526664, 0.819028, 0.651461)
+shape = SubResource("BoxShape3D_cg2eh")
+
+[node name="inner_walls" type="StaticBody3D" parent="collisions"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/inner_walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.21645, 0)
+shape = SubResource("BoxShape3D_sseid")
+
+[node name="inner_floors" type="StaticBody3D" parent="collisions"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/inner_floors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.564815, -0.0568213, 0.15283)
+shape = SubResource("BoxShape3D_6socc")
+
+[node name="base" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.214111, -1.00624, 0)
+shape = SubResource("BoxShape3D_nou43")

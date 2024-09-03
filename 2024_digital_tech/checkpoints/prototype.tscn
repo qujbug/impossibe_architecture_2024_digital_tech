@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://non-player text/teleporter.gd" id="1_a74jf"]
 [ext_resource type="Script" path="res://checkpoints/prototype.gd" id="1_nqpdp"]
-[ext_resource type="PackedScene" uid="uid://brb1bn30d0m2f" path="res://player.tscn" id="1_tdcpe"]
+[ext_resource type="PackedScene" uid="uid://brb1bn30d0m2f" path="res://player/player.tscn" id="1_tdcpe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vxvyc"]
 size = Vector3(9.97601, 1, 9.98782)

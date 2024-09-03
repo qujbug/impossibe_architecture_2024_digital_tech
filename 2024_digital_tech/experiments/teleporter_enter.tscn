@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://5vinux5q1bjb"]
 
-[ext_resource type="Script" path="res://enterpoint.gd" id="1_srmlh"]
+[ext_resource type="Script" path="res://experiments/enterpoint.gd" id="1_srmlh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wtfy2"]
 

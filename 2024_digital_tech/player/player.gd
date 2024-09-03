@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 
 @export var SPEED = 7.5
-const JUMP_VELOCITY = 10
+const JUMP_VELOCITY = 5
 var number_of_jumps = 0
 
 var _move_dir: Vector2 = Vector2.ZERO
@@ -93,7 +93,7 @@ func exacute_interaction( ):
 			"slowcamera" :
 				$CameraController.position = lerp($CameraController.position,position,1)
 
-
+#the god of a;l people, 
 func _on_area_3d_area_entered(area):
 	if is_in_group("water"):
 		velocity.y *= 0.125

@@ -18,11 +18,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Teleporter="*res://teleporter.gd"
-
-[filesystem]
-
-import/blender/enabled=false
+Teleporter="*res://experiments/teleporter.gd"
 
 [input]
 

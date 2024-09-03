@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cctni15si2uqp"]
+
+[ext_resource type="PackedScene" uid="uid://slrxqkos5tw6" path="res://elephant/elephant-assets/elephant_innards_test.blend" id="1_7xewv"]
+[ext_resource type="PackedScene" uid="uid://brb1bn30d0m2f" path="res://player/player.tscn" id="2_0dgrm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hawho"]
+size = Vector3(5.3634, 0.0384521, 0.394043)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqqa3"]
+size = Vector3(4.63904, 1, 1)
+
+[node name="inside_elephant" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49032, -2.16556, -2.7899)
+shape = SubResource("BoxShape3D_hawho")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.998875, -0.0474203, 0, 0.0474203, 0.998875, 0, 0, 0, 1, 6.9767, -1.64695, -1.83006)
+shape = SubResource("BoxShape3D_tqqa3")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.998875, -0.0474203, 0, 0.0474203, 0.998875, 0, 0, 0, 1, 6.9767, -1.64695, -3.60668)
+shape = SubResource("BoxShape3D_tqqa3")
+
+[node name="elephant_innards_test" parent="." instance=ExtResource("1_7xewv")]
+transform = Transform3D(3.1, 0, 0, 0, 3.1, 0, 0, 0, 3.1, -0.990015, 0.00190336, 2.33893)
+
+[node name="player" parent="." instance=ExtResource("2_0dgrm")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 6.68686, 2.3554, -2.53846)

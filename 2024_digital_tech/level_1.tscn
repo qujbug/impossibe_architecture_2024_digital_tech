@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://bo8qeq54uy733"]
+[gd_scene load_steps=14 format=3 uid="uid://bo8qeq54uy733"]
 
-[ext_resource type="PackedScene" uid="uid://brb1bn30d0m2f" path="res://player.tscn" id="2_5fxeo"]
+[ext_resource type="PackedScene" uid="uid://brb1bn30d0m2f" path="res://player/player.tscn" id="2_5fxeo"]
 [ext_resource type="PackedScene" uid="uid://biiexk3kmqwn6" path="res://Game Components/InteractArea/interact_area.tscn" id="3_0lk1c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_71ddi"]
@@ -31,10 +31,6 @@ size = Vector3(1, 5.2193, 30.1602)
 size = Vector3(12.9965, 10.0345, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dfiwr"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_x7lpm"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_1evlu"]
 
 [node name="Level1" type="Node3D"]
 
@@ -441,7 +437,7 @@ interact_value = [25.0, 25.0, 25.0, 0, 0.0, 0]
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 
 [node name="InteractTeleport" parent="." instance=ExtResource("3_0lk1c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.706841, -15.1408)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84643, -12.2921)
 visible = false
 interact_type = "teleport"
 interact_value = [25, 25, 25.0]
@@ -471,13 +467,3 @@ mesh = SubResource("BoxMesh_cwta3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="buildings_2/Floor-2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000610352, 0.00158691, -0.0436554)
 shape = SubResource("BoxShape3D_3srlq")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.757098, -0.653302, 0, 0.653302, 0.757098, 0, -17.8385, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("BoxShape3D_x7lpm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = SubResource("BoxMesh_1evlu")
-skeleton = NodePath("../CollisionShape3D")

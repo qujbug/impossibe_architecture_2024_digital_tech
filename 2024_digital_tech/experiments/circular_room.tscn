@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://twhgaha0tbed"]
 
-[ext_resource type="Script" path="res://circular_room.gd" id="1_ih14f"]
-[ext_resource type="PackedScene" uid="uid://brb1bn30d0m2f" path="res://player.tscn" id="2_rxag6"]
+[ext_resource type="Script" path="res://experiments/circular_room.gd" id="1_ih14f"]
+[ext_resource type="PackedScene" uid="uid://brb1bn30d0m2f" path="res://player/player.tscn" id="2_rxag6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3tpik"]
 size = Vector3(14.9991, 1, 5.00122)
