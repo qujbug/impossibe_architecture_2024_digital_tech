@@ -431,14 +431,12 @@ interact_value = [25, 25, 1]
 
 [node name="InteractTeleport2" parent="." instance=ExtResource("3_0lk1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70465, 5.25588)
-visible = false
 interact_value = [25.0, 25.0, 25.0, 0, 0.0, 0]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 
 [node name="InteractTeleport" parent="." instance=ExtResource("3_0lk1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84643, -12.2921)
-visible = false
 interact_type = "teleport"
 interact_value = [25, 25, 25.0]
 

@@ -1,40 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://olwxr5ogtjwv"]
+[gd_scene load_steps=9 format=3 uid="uid://olwxr5ogtjwv"]
 
 [ext_resource type="Script" path="res://elephant/elephant.gd" id="1_jl3ol"]
 [ext_resource type="PackedScene" uid="uid://djxy5rnqpxcin" path="res://elephant/elephant-assets/elephant.blend" id="2_1v8r8"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cg2eh"]
-size = Vector3(1.79062, 0.0168152, 1.68518)
+[ext_resource type="PackedScene" uid="uid://dhj6hb5qj63ne" path="res://assets/elephant.blend" id="2_m5a1k"]
+[ext_resource type="PackedScene" uid="uid://biiexk3kmqwn6" path="res://Game Components/InteractArea/interact_area.tscn" id="4_qs1et"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sseid"]
+size = Vector3(0.001, 0.50293, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6socc"]
 size = Vector3(0.390045, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nou43"]
-size = Vector3(3.45459, 0.374512, 1)
+size = Vector3(3.45459, 0.57544, 2.13)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cg2eh"]
+size = Vector3(1.79062, 0.0168152, 1.68518)
 
 [node name="elephant" type="CharacterBody3D"]
 script = ExtResource("1_jl3ol")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-skeleton = NodePath("../collisions/floors/top")
+skeleton = NodePath("../top")
+
+[node name="elephant2" parent="." instance=ExtResource("2_m5a1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93682, -1.19209e-07, 2.17456)
 
 [node name="elephant" parent="." instance=ExtResource("2_1v8r8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93682, -1.19209e-07, 2.17456)
+visible = false
 
 [node name="collisions" type="Node3D" parent="."]
-
-[node name="floors" type="StaticBody3D" parent="collisions"]
-
-[node name="top" type="CollisionShape3D" parent="collisions/floors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.526664, 0.819028, 0.651461)
-shape = SubResource("BoxShape3D_cg2eh")
 
 [node name="inner_walls" type="StaticBody3D" parent="collisions"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/inner_walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.21645, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.330443, 0.242429, -0.00208384)
 shape = SubResource("BoxShape3D_sseid")
 
 [node name="inner_floors" type="StaticBody3D" parent="collisions"]
@@ -44,5 +45,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.564815, -0.0568213, 0.1528
 shape = SubResource("BoxShape3D_6socc")
 
 [node name="base" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.214111, -1.00624, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.214111, -1.96114, 0.565002)
 shape = SubResource("BoxShape3D_nou43")
+
+[node name="top" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.526664, 0.819028, 0.651461)
+shape = SubResource("BoxShape3D_cg2eh")
+
+[node name="InteractTeleport" parent="." instance=ExtResource("4_qs1et")]
+visible = false

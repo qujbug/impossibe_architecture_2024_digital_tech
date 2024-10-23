@@ -46,7 +46,6 @@ script = ExtResource("1_8w0x0")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
-visible = false
 
 [node name="Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_fpvjn")
@@ -97,4 +96,5 @@ shape = SubResource("CapsuleShape3D_37j4v")
 
 [connection signal="area_entered" from="Interaction Compoents/InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Interaction Compoents/InteractionArea" to="." method="_on_interaction_area_area_exited"]
+[connection signal="area_exited" from="Interaction Compoents/small_interaction" to="." method="_on_small_interaction_area_exited"]
 [connection signal="area_entered" from="Water/Area3D" to="." method="_on_area_3d_area_entered"]

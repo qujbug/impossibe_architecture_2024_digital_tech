@@ -13,7 +13,7 @@ config_version=5
 config/name="impossible_architecture_2024"
 run/main_scene="res://level_1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/bg_color=Color(0.247059, 0.0117647, 0.231373, 1)
+boot_splash/bg_color=Color(0.94902, 0.662745, 0.235294, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -114,3 +114,8 @@ escape={
 
 3d_physics/layer_2="Interactions"
 3d_physics/layer_3="Water"
+
+[rendering]
+
+environment/volumetric_fog/volume_size=16
+environment/volumetric_fog/volume_depth=16
